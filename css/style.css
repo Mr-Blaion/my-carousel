@@ -1,0 +1,92 @@
+/* ---------------------------------------------
+   Layout general
+--------------------------------------------- */
+body {
+  margin: 0;
+  font-family: sans-serif;
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background: #f0f4f8;
+}
+
+/* Contenedor del carrusel */
+#carousel-container {
+  text-align: center;
+}
+
+/* La rueda */
+#wheel {
+  position: relative;
+  width: 300px; height: 300px;
+  margin: 0 auto;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 8px solid #333;
+  transition: transform 4s cubic-bezier(0.25,0.1,0.25,1);
+}
+
+/* Cada sector ocupa 90° */
+.sector {
+  position: absolute;
+  width: 50%; height: 50%;
+  top: 0; left: 50%;
+  transform-origin: 0% 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+}
+.sector-0 { background: #4caf50; transform: rotate(0deg); }
+.sector-1 { background: #ff9800; transform: rotate(90deg); }
+.sector-2 { background: #2196f3; transform: rotate(180deg); }
+.sector-3 { background: #e91e63; transform: rotate(270deg); }
+
+#spin-btn {
+  margin-top: 16px;
+  padding: 8px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Modal básico */
+#modal.hidden { display: none; }
+#modal {
+  position: fixed; top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex; align-items: center; justify-content: center;
+}
+#modal-content {
+  background: white;
+  padding: 24px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+}
+#close-modal {
+  position: absolute;
+  top: 8px; right: 12px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+#options-container button {
+  display: block;
+  width: 100%;
+  margin: 8px 0;
+  padding: 8px;
+  cursor: pointer;
+}
+#free-text {
+  width: 100%;
+  height: 80px;
+  margin-top: 12px;
+}
+#check-btn {
+  margin-top: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
