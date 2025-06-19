@@ -4,20 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Carrusel de Conexiones</title>
+  <!-- Fuentes -->
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Estilos -->
   <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
   <div id="carousel-container">
+    <h1 class="title">🎠 Carrusel de Conexiones</h1>
     <div id="wheel">
       <div class="sector sector-0">Función</div>
       <div class="sector sector-1">Categoría</div>
       <div class="sector sector-2">Parte–Todo</div>
       <div class="sector sector-3">Características</div>
     </div>
-    <button id="spin-btn">Girar</button>
+    <button id="spin-btn">¡Girar!</button>
   </div>
 
-  <!-- Modal de pregunta -->
+  <!-- Modal de pregunta y justificación -->
   <div id="modal" class="hidden">
     <div id="modal-content">
       <span id="close-modal">&times;</span>
@@ -25,11 +29,15 @@
       <p id="prompt-text"></p>
 
       <div id="options-container"></div>
-      <textarea id="free-text" class="hidden" placeholder="Escribe tu justificación aquí…"></textarea>
-      <button id="check-btn" class="hidden">Enviar</button>
+
+      <!-- Botón general para enviar justificación -->
+      <button id="submit-justif-btn" class="hidden">Enviar justificación</button>
     </div>
   </div>
 
+  <!-- Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <!-- Lógica JS -->
   <script src="js/script.js"></script>
 </body>
 </html>

@@ -1,92 +1,106 @@
-/* ---------------------------------------------
-   Layout general
---------------------------------------------- */
+/* Reset y tipografía */
+* { box-sizing: border-box; margin: 0; padding: 0; }
 body {
-  margin: 0;
-  font-family: sans-serif;
-  display: flex;
-  height: 100vh;
-  align-items: center;
-  justify-content: center;
-  background: #f0f4f8;
+  font-family: 'Comic Neue', cursive;
+  background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+  display: flex; align-items: center; justify-content: center;
+  height: 100vh; overflow: hidden;
 }
 
-/* Contenedor del carrusel */
+/* Contenedor */
 #carousel-container {
   text-align: center;
+  background: rgba(255,255,255,0.9);
+  padding: 24px; border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  width: 380px;
+  animation: fadeIn 1s ease;
+}
+.title {
+  margin-bottom: 16px;
+  color: #333;
+  animation: popIn 0.8s ease;
 }
 
-/* La rueda */
+/* Rueda */
 #wheel {
-  position: relative;
-  width: 300px; height: 300px;
-  margin: 0 auto;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 8px solid #333;
-  transition: transform 4s cubic-bezier(0.25,0.1,0.25,1);
+  position: relative; width: 300px; height: 300px;
+  margin: 0 auto; border-radius: 50%;
+  overflow: hidden; border: 8px dashed #ff6f61;
+  background: #fff;
+  transition: box-shadow 0.3s;
 }
+#wheel:hover { box-shadow: 0 0 20px rgba(255,111,97,0.7); }
 
-/* Cada sector ocupa 90° */
 .sector {
-  position: absolute;
-  width: 50%; height: 50%;
-  top: 0; left: 50%;
-  transform-origin: 0% 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  color: white;
+  position: absolute; width: 50%; height: 50%;
+  top: 0; left: 50%; transform-origin: 0% 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: bold; font-size: 1rem; color: #fff;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
-.sector-0 { background: #4caf50; transform: rotate(0deg); }
-.sector-1 { background: #ff9800; transform: rotate(90deg); }
-.sector-2 { background: #2196f3; transform: rotate(180deg); }
-.sector-3 { background: #e91e63; transform: rotate(270deg); }
+.sector:hover { animation: pulse 1s infinite; }
+.sector-0 { background: #ff6f61; transform: rotate(0deg); }
+.sector-1 { background: #6b5b95; transform: rotate(90deg); }
+.sector-2 { background: #88b04b; transform: rotate(180deg); }
+.sector-3 { background: #ffdd57; transform: rotate(270deg); }
 
+/* Botón Girar */
 #spin-btn {
-  margin-top: 16px;
-  padding: 8px 16px;
-  font-size: 1rem;
-  cursor: pointer;
+  margin-top: 20px; background: #ff6f61; color: #fff;
+  border: none; font-size: 1.1rem; padding: 12px 24px;
+  border-radius: 8px; cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  transition: background 0.3s, transform 0.2s;
 }
+#spin-btn:hover { background: #ff4c3b; transform: scale(1.05); }
 
-/* Modal básico */
+/* Modal */
 #modal.hidden { display: none; }
 #modal {
-  position: fixed; top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.6);
-  display: flex; align-items: center; justify-content: center;
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6); display: flex;
+  align-items: center; justify-content: center;
 }
 #modal-content {
-  background: white;
-  padding: 24px;
-  border-radius: 8px;
-  width: 90%;
-  max-width: 400px;
-  position: relative;
+  background: #fff; padding: 24px; border-radius: 12px;
+  width: 90%; max-width: 420px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  animation: slideIn 0.5s ease;
 }
 #close-modal {
-  position: absolute;
-  top: 8px; right: 12px;
-  font-size: 1.5rem;
-  cursor: pointer;
+  position: absolute; top: 8px; right: 12px;
+  font-size: 1.5rem; cursor: pointer; color: #999;
 }
-#options-container button {
-  display: block;
-  width: 100%;
-  margin: 8px 0;
-  padding: 8px;
-  cursor: pointer;
+
+/* Opciones y justificaciones */
+#options-container {
+  margin: 16px 0;
+  text-align: left;
 }
-#free-text {
-  width: 100%;
-  height: 80px;
-  margin-top: 12px;
+#options-container label {
+  display: block; margin: 8px 0;
+  cursor: pointer; font-size: 0.95rem;
 }
-#check-btn {
-  margin-top: 8px;
-  padding: 8px 16px;
-  cursor: pointer;
+#options-container input[type="radio"] {
+  margin-right: 8px;
 }
+
+/* Botón enviar justificación */
+#submit-justif-btn {
+  display: block; margin: 0 auto;
+  background: #88b04b; color: #fff;
+  border: none; padding: 10px 24px;
+  border-radius: 6px; cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s, transform 0.2s;
+}
+#submit-justif-btn:hover { 
+  background: #6b8e23; transform: scale(1.02);
+}
+
+/* Animaciones */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes popIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+@keyframes slideIn { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.1); } }
